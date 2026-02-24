@@ -1,6 +1,6 @@
 package com.kotlinspring.dto
 
-import javax.validation.constraints.NotBlank
+import jakarta.validation.constraints.NotBlank
 
 data class InstructorDTO(
     val id: Int?,
