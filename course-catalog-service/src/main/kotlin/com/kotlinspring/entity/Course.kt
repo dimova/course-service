@@ -1,6 +1,6 @@
 package com.kotlinspring.entity
 
-import javax.persistence.*
+import jakarta.persistence.*
 
 
 @Entity

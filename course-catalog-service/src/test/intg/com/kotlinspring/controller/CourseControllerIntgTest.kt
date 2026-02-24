@@ -1,26 +1,29 @@
 package com.kotlinspring.controller
 
+import com.kotlinspring.db.PostgreSQLContainerInitializer
 import com.kotlinspring.dto.CourseDTO
 import com.kotlinspring.entity.Course
 import com.kotlinspring.repository.CourseRepository
 import com.kotlinspring.repository.InstructorRepository
 import com.kotlinspring.util.courseEntityList
 import com.kotlinspring.util.instructorEntity
-import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.web.reactive.server.WebTestClient
 import org.springframework.web.util.UriComponentsBuilder
+import org.testcontainers.junit.jupiter.Testcontainers
+
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 @AutoConfigureWebTestClient
-internal class CourseControllerIntgTest {
+@Testcontainers
+internal class CourseControllerIntgTest : PostgreSQLContainerInitializer(){
 
     @Autowired
     lateinit var webTestClient: WebTestClient

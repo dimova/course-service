@@ -1,6 +1,12 @@
 package com.kotlinspring.entity
 
-import javax.persistence.*
+import jakarta.persistence.CascadeType
+import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
+import jakarta.persistence.Id
+import jakarta.persistence.OneToMany
+import jakarta.persistence.Table
 
 @Entity
 @Table(name="INSTRUCTORS")
@@ -14,5 +20,5 @@ data class Instructor(
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
-    var courses : List<Course> = mutableListOf()
+    var courses : MutableList<Course> = mutableListOf<Course>().toMutableList()
 )

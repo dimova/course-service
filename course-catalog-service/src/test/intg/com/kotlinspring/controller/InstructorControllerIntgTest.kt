@@ -1,5 +1,6 @@
 package com.kotlinspring.controller
 
+import com.kotlinspring.db.PostgreSQLContainerInitializer
 import com.kotlinspring.dto.InstructorDTO
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
@@ -12,7 +13,7 @@ import org.springframework.test.web.reactive.server.WebTestClient
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 @AutoConfigureWebTestClient
-class InstructorControllerIntgTest {
+class InstructorControllerIntgTest : PostgreSQLContainerInitializer(){
 
     @Autowired
     lateinit var webTestClient: WebTestClient
