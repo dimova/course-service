@@ -85,3 +85,12 @@ curl -i \
 -d '{"id":null, "name":"Build Restful APIs using Kotlin and SpringBoot", "category": "Development", "instructorId": 1, "description": "Intro course for Kotlin + Spring Boot"}' \
 -H "Content-Type: application/json" \
 -X POST http://localhost:8080/v1/courses
+
+
+UPLOAD A FILE:
+==============
+curl -F "file=@test.jpeg" http://localhost:8080/files/upload
+
+DOWNLOAD A FILE:
+================
+curl -O -J http://localhost:8080/files/1
