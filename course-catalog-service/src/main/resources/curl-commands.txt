@@ -21,6 +21,28 @@ curl -i \
 -H "Content-Type: application/json" \
 -X POST http://localhost:8080/v1/courses
 
+curl -i \
+-d '{"id":null, "name":"Kafka", "category": "Development", "instructorId": 1}' \
+-H "Content-Type: application/json" \
+-X POST http://localhost:8080/v1/courses
+
+curl -i \
+-d '{"id":null, "name":"Angular", "category": "Development", "instructorId": 1}' \
+-H "Content-Type: application/json" \
+-X POST http://localhost:8080/v1/courses
+
+curl -i \
+-d '{"id":null, "name":"React", "category": "Development", "instructorId": 1}' \
+-H "Content-Type: application/json" \
+-X POST http://localhost:8080/v1/courses
+
+curl -i \
+-d '{"id":null, "name":"HTML, CSS, and JavaScript", "category": "Development", "instructorId": 1}' \
+-H "Content-Type: application/json" \
+-X POST http://localhost:8080/v1/courses
+
+
+
 GET COURSES:
 ==============
 curl -i http://localhost:8080/v1/courses
