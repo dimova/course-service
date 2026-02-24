@@ -21,4 +21,8 @@ data class Instructor(
         orphanRemoval = true
     )
     var courses : MutableList<Course> = mutableListOf<Course>().toMutableList()
-)
+) {
+    override fun toString(): String {
+        return "Instructor(id=$id, name='$name')"
+    }
+}

@@ -22,7 +22,7 @@ val instructorService: InstructorService) {
         }
 
         val courseEntity = courseDTO.let {
-            Course(null, it.name, it.category, instructor.get())
+            Course(null, it.name, it.category, instructor.get(), it.description)
         }
 
         courseRepository.save(courseEntity)
@@ -30,7 +30,7 @@ val instructorService: InstructorService) {
         logger.info("Saved Course is : $courseEntity")
         return courseEntity.let {
             //CourseDTO(it.id!!, it.name, it.category)
-            CourseDTO(it.id, it.name, it.category,it.instructor?.id)
+            CourseDTO(it.id, it.name, it.category, it.instructor?.id, it.description)
         }
     }
 
@@ -42,7 +42,7 @@ val instructorService: InstructorService) {
 
         return courses.map {
             //CourseDTO(it.id, it.name, it.category)
-            CourseDTO(it.id, it.name, it.category,it.instructor?.id)
+            CourseDTO(it.id, it.name, it.category, it.instructor?.id, it.description)
         }
 
     }
@@ -57,9 +57,10 @@ val instructorService: InstructorService) {
                 .let {
                     it.category = courseDTO.category
                     it.name = courseDTO.name
+                    it.description = courseDTO.description
                     courseRepository.save(it)
                     //  CourseDTO(it.id, it.name, it.category)
-                    CourseDTO(it.id, it.name, it.category, it.instructor?.id)
+                    CourseDTO(it.id, it.name, it.category, it.instructor?.id, it.description)
                 }
         } else {
             throw CourseNotFoundException("No Course Found for the passed in Id $courseId")

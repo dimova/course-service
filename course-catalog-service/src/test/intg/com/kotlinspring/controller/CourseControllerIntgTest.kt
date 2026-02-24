@@ -54,7 +54,7 @@ internal class CourseControllerIntgTest : PostgreSQLContainerInitializer(){
         //given
         val courseDTO = CourseDTO(null,
             "Build RestFul APis using Spring Boot and Kotlin", "Dilip Sundarraj",
-            instructor.id )
+            instructor.id, "API-focused Spring Boot course" )
 
         //when
         val savedCourseDTO = webTestClient
@@ -80,7 +80,7 @@ internal class CourseControllerIntgTest : PostgreSQLContainerInitializer(){
         //given
         val courseDTO = CourseDTO(null,
             "Build RestFul APis using Spring Boot and Kotlin", "Dilip Sundarraj",
-            999 )
+            999, "API-focused Spring Boot course" )
 
         //when
         val response = webTestClient
@@ -144,10 +144,11 @@ internal class CourseControllerIntgTest : PostgreSQLContainerInitializer(){
         val instructor = instructorRepository.findInstructorByName("Dilip Sundarraj")
         val courseEntity = Course(null,
             "Apache Kafka for Developers using Spring Boot", "Development",
-            instructor)
+            instructor, "Kafka fundamentals")
         courseRepository.save(courseEntity)
         val updatedCourseEntity = Course(null,
-            "Apache Kafka for Developers using Spring Boot1", "Development" )
+            "Apache Kafka for Developers using Spring Boot1", "Development", null,
+            "Kafka course update" )
 
         val updatedCourseDTO = webTestClient
             .put()
@@ -169,7 +170,7 @@ internal class CourseControllerIntgTest : PostgreSQLContainerInitializer(){
         val instructor = instructorRepository.findInstructorByName("Dilip Sundarraj")
         val courseEntity = Course(null,
             "Apache Kafka for Developers using Spring Boot", "Development" ,
-            instructor)
+            instructor, "Kafka fundamentals")
 
         courseRepository.save(courseEntity)
         webTestClient

@@ -110,10 +110,10 @@ class CourseControllerUnitTest {
             listOf(
                 CourseDTO(1,
                     "Build RestFul APis using Spring Boot and Kotlin", "Development" ,
-                1),
+                1, "API-focused Spring Boot course"),
                 CourseDTO(2,
                     "Build Reactive Microservices using Spring WebFlux/SpringBoot", "Development" ,
-                    1)
+                    1, "Reactive microservices with WebFlux")
             )
         )
 
@@ -137,11 +137,12 @@ class CourseControllerUnitTest {
     fun updateCourse() {
 
         val updatedCourseEntity = Course(null,
-            "Apache Kafka for Developers using Spring Boot1", "Development" )
+            "Apache Kafka for Developers using Spring Boot1", "Development", null,
+            "Kafka course update" )
 
         every { courseServiceMock.updateCourse(any(), any()) } returns CourseDTO(100,
             "Apache Kafka for Developers using Spring Boot1", "Development" ,
-            1)
+            1, "Kafka course update")
 
 
         val updatedCourseDTO = webTestClient
@@ -154,7 +155,7 @@ class CourseControllerUnitTest {
             .returnResult()
             .responseBody
 
-        Assertions.assertEquals("Apache Kafka for Developers using Spring Boot1", updatedCourseDTO?.name)
+        assertEquals("Apache Kafka for Developers using Spring Boot1", updatedCourseDTO?.name)
 
     }
 

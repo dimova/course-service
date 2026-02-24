@@ -17,10 +17,12 @@ data class Course(
         fetch = FetchType.LAZY
     )
     @JoinColumn(name = "INSTRUCTOR_ID", nullable = false)
-    val instructor: Instructor? = null
-){
+    val instructor: Instructor? = null,
 
+    var description: String? = null
+){
     override fun toString(): String {
-        return "Course(id=$id, name='$name', category='$category', instructor=${instructor!!.id})"
+        val instructorId = instructor?.id
+        return "Course(id=$id, name='$name', category='$category', instructorId=$instructorId, description=$description)"
     }
 }
