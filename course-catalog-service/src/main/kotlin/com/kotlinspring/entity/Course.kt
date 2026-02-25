@@ -19,10 +19,11 @@ data class Course(
     @JoinColumn(name = "INSTRUCTOR_ID", nullable = false)
     val instructor: Instructor? = null,
 
-    var description: String? = null
+    var description: String? = null,
+    var fileName: String? = null
 ){
     override fun toString(): String {
         val instructorId = instructor?.id
-        return "Course(id=$id, name='$name', category='$category', instructorId=$instructorId, description=$description)"
+        return "Course(id=$id, name='$name', category='$category', instructorId=$instructorId, description=$description, fileName=$fileName)"
     }
 }

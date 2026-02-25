@@ -82,7 +82,7 @@ curl -i \
 CREATE COURSE WITH INSTRUCTOR:
 ==================
 curl -i \
--d '{"id":null, "name":"Build Restful APIs using Kotlin and SpringBoot", "category": "Development", "instructorId": 1, "description": "Intro course for Kotlin + Spring Boot"}' \
+-d '{"id":null, "name":"Build Restful APIs using Kotlin and SpringBoot", "category": "Development", "instructorId": 1, "description": "Intro course for Kotlin + Spring Boot", "fileName": "1_test.jpeg"}' \
 -H "Content-Type: application/json" \
 -X POST http://localhost:8080/v1/courses
 
@@ -91,11 +91,27 @@ UPLOAD A FILE:
 ==============
 curl -F "file=@test.jpeg" http://localhost:8080/files/upload
 
-DOWNLOAD A FILE BY ID:
-======================
-curl -O -J http://localhost:8080/files/1
+# Example response:
+# {"filename":"1_test.jpeg"}
+
+CREATE COURSE (WITH IMAGE FILE NAME):
+====================================
+curl -i \
+-d '{"id":null, "name":"Build Restful APIs using Kotlin and SpringBoot", "category": "Development", "instructorId": 1, "description": "Intro course for Kotlin + Spring Boot", "fileName": "1_test.jpeg"}' \
+-H "Content-Type: application/json" \
+-X POST http://localhost:8080/v1/courses
+
+UPDATE COURSE (WITH IMAGE FILE NAME):
+====================================
+curl -i \
+-d '{"id":null, "name":"Build Restful APIs using Kotlin & SpringBoot2", "category": "Development", "instructorId": 1, "description": "Updated course description", "fileName": "1_test.jpeg"}' \
+-H "Content-Type: application/json" \
+-X PUT http://localhost:8080/v1/courses/1
 
 SERVE FILE BY FILENAME FROM /tmp/uploads/ (inline display in browser):
 ======================================================================
-curl -i http://localhost:8080/files/serve/test.jpeg
+curl -i http://localhost:8080/files/serve/1_test.jpeg
 
+DOWNLOAD A FILE BY ID:
+======================
+curl -O -J http://localhost:8080/files/1

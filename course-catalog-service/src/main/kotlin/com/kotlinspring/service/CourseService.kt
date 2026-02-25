@@ -22,7 +22,7 @@ val instructorService: InstructorService) {
         }
 
         val courseEntity = courseDTO.let {
-            Course(null, it.name, it.category, instructor.get(), it.description)
+            Course(null, it.name, it.category, instructor.get(), it.description, it.fileName)
         }
 
         courseRepository.save(courseEntity)
@@ -30,7 +30,7 @@ val instructorService: InstructorService) {
         logger.info("Saved Course is : $courseEntity")
         return courseEntity.let {
             //CourseDTO(it.id!!, it.name, it.category)
-            CourseDTO(it.id, it.name, it.category, it.instructor?.id, it.description)
+            CourseDTO(it.id, it.name, it.category, it.instructor?.id, it.description, it.fileName)
         }
     }
 
@@ -41,8 +41,7 @@ val instructorService: InstructorService) {
         } ?: courseRepository.findAll()
 
         return courses.map {
-            //CourseDTO(it.id, it.name, it.category)
-            CourseDTO(it.id, it.name, it.category, it.instructor?.id, it.description)
+            CourseDTO(it.id, it.name, it.category, it.instructor?.id, it.description, it.fileName)
         }
 
     }
@@ -58,9 +57,9 @@ val instructorService: InstructorService) {
                     it.category = courseDTO.category
                     it.name = courseDTO.name
                     it.description = courseDTO.description
+                    it.fileName = courseDTO.fileName
                     courseRepository.save(it)
-                    //  CourseDTO(it.id, it.name, it.category)
-                    CourseDTO(it.id, it.name, it.category, it.instructor?.id, it.description)
+                    CourseDTO(it.id, it.name, it.category, it.instructor?.id, it.description, it.fileName)
                 }
         } else {
             throw CourseNotFoundException("No Course Found for the passed in Id $courseId")

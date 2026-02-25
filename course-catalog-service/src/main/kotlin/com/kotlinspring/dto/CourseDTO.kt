@@ -11,5 +11,6 @@ data class CourseDTO(
     val category: String,
     @get:NotNull(message = "courseDTO.instructorId must not be null")
     var instructorId: Int? = null,
-    var description: String? = null
+    var description: String? = null,
+    var fileName: String? = null
 )
