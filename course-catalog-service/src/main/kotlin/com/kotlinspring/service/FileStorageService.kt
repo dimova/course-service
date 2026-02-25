@@ -5,7 +5,7 @@ import com.kotlinspring.repository.DocumentRepository
 import org.springframework.stereotype.Service
 import org.springframework.web.multipart.MultipartFile
 import java.nio.file.*
-import java.util.*
+
 
 @Service
 class FileStorageService(
@@ -27,8 +27,7 @@ class FileStorageService(
         require(file.contentType in allowedTypes) { "Invalid file type" }
 
         val originalName = file.originalFilename ?: "file"
-        val safeFileName = UUID.randomUUID().toString() + "_" +
-                Paths.get(originalName).fileName.toString()
+        val safeFileName = Paths.get(originalName).fileName.toString()
 
         val targetLocation = uploadDir.resolve(safeFileName).normalize()
 
