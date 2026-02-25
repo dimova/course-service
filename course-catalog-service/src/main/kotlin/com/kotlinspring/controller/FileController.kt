@@ -22,9 +22,11 @@ class FileController(
     @GetMapping("/{id}")
     fun download(@PathVariable id: Long): ResponseEntity<UrlResource> {
         val path = fileStorageService.load(id)
+        val fileName = fileStorageService.getDocumentFileName(id)
         val resource = UrlResource(path.toUri())
 
         return ResponseEntity.ok()
+            .header("Content-Disposition", "attachment; filename=\"$fileName\"")
             .contentType(MediaType.APPLICATION_OCTET_STREAM)
             .body(resource)
     }

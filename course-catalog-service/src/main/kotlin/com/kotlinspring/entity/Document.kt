@@ -13,5 +13,5 @@ class Document(
     val fileName: String,
     val contentType: String,
     val size: Long,
-    val storagePath: String
+    var storagePath: String
 )
