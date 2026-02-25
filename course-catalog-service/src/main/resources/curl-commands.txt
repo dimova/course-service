@@ -91,6 +91,11 @@ UPLOAD A FILE:
 ==============
 curl -F "file=@test.jpeg" http://localhost:8080/files/upload
 
-DOWNLOAD A FILE:
-================
+DOWNLOAD A FILE BY ID:
+======================
 curl -O -J http://localhost:8080/files/1
+
+SERVE FILE BY FILENAME FROM /tmp/uploads/ (inline display in browser):
+======================================================================
+curl -i http://localhost:8080/files/serve/test.jpeg
+
